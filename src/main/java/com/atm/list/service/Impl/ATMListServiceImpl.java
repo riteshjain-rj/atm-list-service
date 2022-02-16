@@ -1,14 +1,16 @@
-package atm.list.service.service.Impl;
+package com.atm.list.service.Impl;
 
-import atm.list.service.model.ATMListResponse;
-import atm.list.service.repository.ATMListRepo;
-import atm.list.service.service.ATMListService;
+import com.atm.list.repository.ATMListRepo;
+import com.atm.list.model.ATMListResponse;
+import com.atm.list.service.ATMListService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service("atmListService")
 public class ATMListServiceImpl implements ATMListService {
 
@@ -23,6 +25,10 @@ public class ATMListServiceImpl implements ATMListService {
 
     @Override
     public List<ATMListResponse> getATMList(long id) {
-        return atmListRepo.getATMList(getHeaders()).getBody().data;
+        log.info("Service: Fetching ATMs with id {}", id);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("identification", Long.toString(id));
+        headers.set("Content-Type", "application/json");
+        return atmListRepo.getATMList(headers).getBody().data;
     }
 }

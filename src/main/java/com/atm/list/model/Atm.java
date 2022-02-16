@@ -1,5 +1,5 @@
 
-package atm.list.service.model;
+package com.atm.list.model;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,28 +22,19 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)@JsonPropertyOrder({
-    "AddressLine",
-    "StreetName",
-    "TownName",
-    "CountrySubDivision",
-    "Country",
-    "PostCode"
+    "Identification",
+    "SupportedCurrencies",
+    "Location"
 })
 @Generated("jsonschema2pojo")
-public class PostalAddress {
+public class Atm {
 
-    @JsonProperty("AddressLine")
-    public List<String> addressLine = null;
-    @JsonProperty("StreetName")
-    public String streetName;
-    @JsonProperty("TownName")
-    public String townName;
-    @JsonProperty("CountrySubDivision")
-    public List<String> countrySubDivision = null;
-    @JsonProperty("Country")
-    public String country;
-    @JsonProperty("PostCode")
-    public String postCode;
+    @JsonProperty("Identification")
+    public String identification;
+    @JsonProperty("SupportedCurrencies")
+    public List<String> supportedCurrencies = null;
+    @JsonProperty("Location")
+    public Location location;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

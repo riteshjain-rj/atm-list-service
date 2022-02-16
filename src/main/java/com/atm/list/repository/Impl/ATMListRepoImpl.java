@@ -1,7 +1,8 @@
-package atm.list.service.repository.Impl;
+package com.atm.list.repository.Impl;
 
-import atm.list.service.model.DownStreamAPIResponse;
-import atm.list.service.repository.ATMListRepo;
+import com.atm.list.model.DownStreamAPIResponse;
+import com.atm.list.repository.ATMListRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +14,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.List;
+
+@Slf4j
 @Repository("atmListRepo")
 public class ATMListRepoImpl implements ATMListRepo {
 
@@ -31,6 +35,7 @@ public class ATMListRepoImpl implements ATMListRepo {
 
     @Override
     public ResponseEntity<DownStreamAPIResponse> getATMList(HttpHeaders headers) {
+        log.info("Repository: Fetching ATMs downStream API trigger");
         UriComponentsBuilder builder = UriComponentsBuilder.newInstance()
         .scheme(apiScheme)
         .host(apiHost)

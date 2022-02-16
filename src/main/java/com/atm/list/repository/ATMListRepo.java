@@ -1,6 +1,6 @@
-package atm.list.service.repository;
+package com.atm.list.repository;
 
-import atm.list.service.model.DownStreamAPIResponse;
+import com.atm.list.model.DownStreamAPIResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 

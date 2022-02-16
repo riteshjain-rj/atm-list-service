@@ -1,5 +1,5 @@
 
-package atm.list.service.model;
+package com.atm.list.model;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,20 +21,18 @@ import lombok.*;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)@JsonPropertyOrder({
-    "Identification",
-    "SupportedCurrencies",
-    "Location"
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    "meta",
+    "data"
 })
 @Generated("jsonschema2pojo")
-public class Atm {
+public class DownStreamAPIResponse {
 
-    @JsonProperty("Identification")
-    public String identification;
-    @JsonProperty("SupportedCurrencies")
-    public List<String> supportedCurrencies = null;
-    @JsonProperty("Location")
-    public Location location;
+    @JsonProperty("meta")
+    public Meta meta;
+    @JsonProperty("data")
+    public List<ATMListResponse> data = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

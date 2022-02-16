@@ -1,6 +1,6 @@
-package atm.list.service.service;
+package com.atm.list.service;
 
-import atm.list.service.model.ATMListResponse;
+import com.atm.list.model.ATMListResponse;
 
 import java.util.List;
 

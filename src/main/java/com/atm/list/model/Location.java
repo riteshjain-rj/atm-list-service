@@ -1,5 +1,5 @@
 
-package atm.list.service.model;
+package com.atm.list.model;
 
 import java.util.HashMap;
 import java.util.Map;

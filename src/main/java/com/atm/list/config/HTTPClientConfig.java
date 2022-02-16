@@ -1,4 +1,4 @@
-package atm.list.service.config;
+package com.atm.list.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

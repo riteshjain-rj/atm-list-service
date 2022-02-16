@@ -1,8 +1,7 @@
 
-package atm.list.service.model;
+package com.atm.list.model;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -21,18 +20,26 @@ import lombok.*;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "meta",
-    "data"
+@JsonInclude(JsonInclude.Include.NON_NULL)@JsonPropertyOrder({
+    "LastUpdated",
+    "TotalResults",
+    "Agreement",
+    "License",
+    "TermsOfUse"
 })
 @Generated("jsonschema2pojo")
-public class DownStreamAPIResponse {
+public class Meta {
 
-    @JsonProperty("meta")
-    public Meta meta;
-    @JsonProperty("data")
-    public List<ATMListResponse> data = null;
+    @JsonProperty("LastUpdated")
+    public String lastUpdated;
+    @JsonProperty("TotalResults")
+    public Integer totalResults;
+    @JsonProperty("Agreement")
+    public String agreement;
+    @JsonProperty("License")
+    public String license;
+    @JsonProperty("TermsOfUse")
+    public String termsOfUse;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

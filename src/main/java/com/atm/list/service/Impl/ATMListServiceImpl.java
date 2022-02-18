@@ -1,7 +1,7 @@
 package com.atm.list.service.Impl;
 
-import com.atm.list.repository.ATMListRepo;
 import com.atm.list.model.ATMListResponse;
+import com.atm.list.repository.ATMListRepo;
 import com.atm.list.service.ATMListService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

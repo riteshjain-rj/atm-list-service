@@ -16,8 +16,6 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.List;
-
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class ATMListRepoImplTest {

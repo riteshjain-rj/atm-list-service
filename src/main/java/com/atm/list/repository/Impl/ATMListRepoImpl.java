@@ -14,8 +14,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.List;
-
 @Slf4j
 @Repository("atmListRepo")
 public class ATMListRepoImpl implements ATMListRepo {

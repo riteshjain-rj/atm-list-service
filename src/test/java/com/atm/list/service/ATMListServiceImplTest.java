@@ -1,6 +1,5 @@
 package com.atm.list.service;
 
-import com.atm.list.model.ATMListResponse;
 import com.atm.list.model.DownStreamAPIResponse;
 import com.atm.list.repository.ATMListRepo;
 import com.atm.list.service.Impl.ATMListServiceImpl;
@@ -19,9 +18,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 public class ATMListServiceImplTest {

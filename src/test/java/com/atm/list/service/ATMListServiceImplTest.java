@@ -44,7 +44,7 @@ public class ATMListServiceImplTest {
     }
 
     @Test
-    public void givenATMListRepository_thenOK() throws IOException {
+    public void whenGetATMList_thenSuccessful() throws IOException {
         DownStreamAPIResponse response = TestUtils.getObjectFromJson(MOCK_RESPONSE, DownStreamAPIResponse.class, resourceLoader);
         Assert.assertEquals(response.getData(), atmListService.getATMList(30847300L));
     }

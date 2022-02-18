@@ -32,7 +32,7 @@ public class ATMListControllerTest {
     }
 
     @Test
-    public void givenCarController_whenRetrieveCar_thenOK() throws Exception{
+    public void whenGetATMList_thenSuccessful() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/api/atms")
                 .header("identification", "30847300")
                 .contentType(MediaType.APPLICATION_JSON))

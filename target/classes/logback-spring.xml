@@ -31,7 +31,7 @@
     </appender>
 
     <logger name="org.springframework" level="ERROR" />
-    <logger name="com.atm.list" level="INFO" />
+    <logger name="com.atm.list" level="WARN" />
 
     <root level="info">
         <appender-ref ref="STDOUT" />

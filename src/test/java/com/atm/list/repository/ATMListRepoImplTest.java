@@ -43,7 +43,7 @@ public class ATMListRepoImplTest {
     }
 
     @Test
-    public void getATMListTest() throws Exception {
+    public void whenGetATMList_thenSuccessful() throws Exception {
 
         UriComponentsBuilder builder = UriComponentsBuilder.newInstance()
                 .scheme(apiScheme)

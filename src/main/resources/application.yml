@@ -1,0 +1,21 @@
+server:
+  port: 8085
+management:
+  security:
+    enabled: false
+resilience4j:
+  ratelimiter:
+    configs:
+      default:
+        limitForPeriod: 2
+        limitRefreshPeriod: 1s
+        timeoutDuration: 0
+    instances:
+      atmsRateLimit:
+        baseConfig: default
+api:
+  scheme: https
+  host: api.lloydsbank.com
+  path: /open-banking/v2.2/atms
+
+

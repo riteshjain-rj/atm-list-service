@@ -113,3 +113,39 @@ Application returns the following status codes in its API:
 - docker image rm <image_name
 - docker build -f Dockfile -t atm-list .
 - docker run -p 8085:8085 atm-list
+
+#Actuator
+
+##Actuator Endpoints
+The following table describes the widely used endpoints.
+
+| Id | Usage | Default |
+| :--- | :--- | :--- |
+| actuator | It provides a hypermedia-based discovery page for the other endpoints. It requires Spring HATEOAS to be on the classpath. | True
+| auditevents | It exposes audit events information for the current application. | True
+| autoconfig | It is used to display an auto-configuration report showing all auto-configuration candidates and the reason why they 'were' or 'were not' applied. | True
+| beans | It is used to display a complete list of all the Spring beans in your application. | True
+| configprops | It is used to display a collated list of all @ConfigurationProperties. | True
+| dump | It is used to perform a thread dump. | True
+| env | It is used to expose properties from Spring's ConfigurableEnvironment. | True
+| flyway | It is used to show any Flyway database migrations that have been applied. | True
+| health | It is used to show application health information. | False
+| info | It is used to display arbitrary application info. | false
+| loggers | It is used to show and modify the configuration of loggers in the application. | True
+| liquibase	| It is used to show any Liquibase database migrations that have been applied. | True
+| metrics | It is used to show metrics information for the current application. | True
+| mappings | It is used to display a collated list of all @RequestMapping paths. | True
+| shutdown | It is used to allow the application to be gracefully shutdown. | True
+| trace | It is used to display trace information. | True
+| heapdump | It is used to return a GZip compressed hprof heap dump file. | True
+| logfile | It is used to return the contents of the logfile. | True
+
+###following configuration to expose all endpoints:
+    management.endpoints.web.exposure.include=*
+
+###To explicitly enable a specific endpoint (e.g., /shutdown), we use:
+    management.endpoint.shutdown.enabled=true
+
+###To expose all enabled endpoints except one (e.g., /loggers), we use:
+    management.endpoints.web.exposure.include=*
+    management.endpoints.web.exposure.exclude=loggers

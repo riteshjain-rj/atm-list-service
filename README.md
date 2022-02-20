@@ -104,19 +104,7 @@ Application returns the following status codes in its API:
     "status": "UP"
     }
 
-##Docker commands
-
-- docker images
-- docker container ls
-- docker logs <container_name>
-- docker container rm <container_name
-- docker image rm <image_name
-- docker build -f Dockfile -t atm-list .
-- docker run -p 8085:8085 atm-list
-
-#Actuator
-
-##Actuator Endpoints
+##Endpoints Details
 The following table describes the widely used endpoints.
 
 | Id | Usage | Default |
@@ -149,3 +137,13 @@ The following table describes the widely used endpoints.
 ###To expose all enabled endpoints except one (e.g., /loggers), we use:
     management.endpoints.web.exposure.include=*
     management.endpoints.web.exposure.exclude=loggers
+
+##Docker commands
+
+- docker images
+- docker container ls
+- docker logs <container_name>
+- docker container rm <container_name
+- docker image rm <image_name
+- docker build -f Dockfile -t atm-list .
+- docker run -p 8085:8085 atm-list

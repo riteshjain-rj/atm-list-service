@@ -3,10 +3,7 @@ package com.atm.list.controller;
 import com.atm.list.model.ATMListResponse;
 import com.atm.list.model.ApiError;
 import com.atm.list.service.ATMListService;
-import io.github.resilience4j.bulkhead.BulkheadFullException;
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;
-import io.github.resilience4j.ratelimiter.RequestNotPermitted;
-import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -49,22 +46,20 @@ public class ATMListController {
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = ApiError.class)) }) })
     @GetMapping("/atms")
-    @RateLimiter(name = "atmsRateLimit", fallbackMethod = "atmsFallBack")
-    public ResponseEntity<List<ATMListResponse>> getATMList(
+    @Bulkhead(name = "atmsBulkhead", fallbackMethod = "atmsFallBack")    public ResponseEntity<List<ATMListResponse>> getATMList(
             @Parameter(description = "identification id for of ATM list to be searched")
             @RequestHeader(name = "identification") long identification) {
         log.info("Controller: Fetching ATM list with id {}", identification);
         return new ResponseEntity<>(atmListService.getATMList(identification), HttpStatus.OK);
     }
 
-    public ResponseEntity atmsFallBack(long id, io.github.resilience4j.ratelimiter.RequestNotPermitted ex) {
-        System.out.println("Rate limit applied no further calls are accepted");
-
+    public ResponseEntity atmsFallBack(long id, io.github.resilience4j.bulkhead.BulkheadFullException ex) {
+        log.info("BulkHead applied no further calls are accepted");
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Retry-After", "1"); //retry after one second
+        responseHeaders.set("Retry-After", "10"); //retry after 10 seconds
 
-        return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
                 .headers(responseHeaders) //send retry header
-                .body("Too many request - No further calls are accepted");
+                .body("Too many concurrent requests- Please try after some time");
     }
 }

@@ -4,14 +4,13 @@ management:
   security:
     enabled: false
 resilience4j:
-  ratelimiter:
+  bulkhead:
     configs:
       default:
-        limitForPeriod: 2
-        limitRefreshPeriod: 1s
-        timeoutDuration: 0
+        maxConcurrentCalls: 5
+        maxWaitDuration: 0
     instances:
-      atmsRateLimit:
+      atmsBulkhead:
         baseConfig: default
 api:
   scheme: https

@@ -3,6 +3,14 @@ server:
 management:
   security:
     enabled: false
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, health
 resilience4j:
   bulkhead:
     configs:

@@ -146,4 +146,9 @@ The following table describes the widely used endpoints.
 - docker container rm <container_name
 - docker image rm <image_name
 - docker build -f Dockfile -t atm-list .
+- docker build -f Dockfile -t atm-list:latest .
+- docker build -f Dockfile -t atm-list:latest atm-list:1 .
 - docker run -p 8085:8085 atm-list
+- docker run -p 8085:8085 -d atm-list:latest
+- docker run --name atm-list-latest -p 8085:8085 -d atm-list:latest
+- docker run --name atm-list-1 -p 8086:8080 -d atm-list:1

@@ -145,10 +145,16 @@ The following table describes the widely used endpoints.
 - docker logs <container_name>
 - docker container rm <container_name
 - docker image rm <image_name
-- docker build -f Dockfile -t atm-list .
-- docker build -f Dockfile -t atm-list:latest .
+- docker build -f Dockfile -t atm-list . (create image)
+- docker build -f Dockfile -t atm-list:latest . (create image with tag)
 - docker build -f Dockfile -t atm-list:latest atm-list:1 .
 - docker run -p 8085:8085 atm-list
 - docker run -p 8085:8085 -d atm-list:latest
 - docker run --name atm-list-latest -p 8085:8085 -d atm-list:latest
 - docker run --name atm-list-1 -p 8086:8080 -d atm-list:1
+- docker tag atm-list:1 atm-list:1 (cfeate tag)
+- docker push username/atm-list:tagname (push image into dockerhub)
+- docker rm containerid, containerid (delete container)
+- docker ps -aq (list all container)
+- docker rm $(docker ps -aq) (delete all list container)
+- docker rm -f $(docker ps -aq) (force to delete running container)

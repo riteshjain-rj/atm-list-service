@@ -1,18 +1,43 @@
 server:
   port: 8085
 management:
-  security:
-    enabled: false
+  health:
+    circuitbreakers:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+      metrics:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, health, metrics
+  endpoint:
+    health:
+      show-details: always
 resilience4j:
-  ratelimiter:
+  bulkhead:
     configs:
       default:
-        limitForPeriod: 2
-        limitRefreshPeriod: 1s
-        timeoutDuration: 0
+        maxConcurrentCalls: 5
+        maxWaitDuration: 0
     instances:
-      atmsRateLimit:
+      atmsBulkhead:
         baseConfig: default
+  circuitbreaker:
+    instances:
+      userService:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
 api:
   scheme: https
   host: api.lloydsbank.com
